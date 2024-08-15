@@ -4,6 +4,7 @@ import { createContext } from "react";
 import { DarkTheme, LightTheme } from "../themes";
 import { Box } from "@mui/material"; // Importação de Box do Material UI
 
+
 interface IThemeContextData {
   themeName: "light" | "dark";
   toggleTheme: () => void;
@@ -23,6 +24,7 @@ export const AppThemeProvider: React.FC<IThemeContextProp> = ({ children }) => {
   const [themeName, setThemeName] = useState<"light" | "dark">("light");
 
   const toggleTheme = useCallback(() => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     themeName === "light" ? setThemeName("dark") : setThemeName("light");
   }, [themeName]);
 
