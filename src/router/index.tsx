@@ -1,8 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom"
-import { Home, Products } from "../pages"
 import { useEffect } from "react"
 import { useDrawerContext } from "../shared/contexts/DrawerContext"
 import { Dashboard } from "../pages/dashboard/Dashboard"
+import { ListagemDePessoas } from "../pages/pessoas/ListagemDePessoas"
 
 
 export const RoutesApp = () => {
@@ -16,9 +16,9 @@ export const RoutesApp = () => {
                 label: "pagina-inicial"
             },
             {
-                to: "/produtos",
-                icon: "product",
-                label: "produtos"
+                to: "/pessoas",
+                icon: "people",
+                label: "pessoas"
             }
         ])
     })
@@ -26,7 +26,8 @@ export const RoutesApp = () => {
     return(
         <Routes>
             <Route path="/home" element={<Dashboard/>} />
-            <Route path="/produtos" element={<Products/>} />
+
+            <Route path="/pessoas" element={<ListagemDePessoas/>} />
 
             <Route path="*" element={<Navigate to="/home"/>} />
         </Routes>

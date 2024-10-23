@@ -2,9 +2,6 @@ import { Avatar, Box, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon,
 import { useDrawerContext } from "../../contexts/DrawerContext"
 import { useMatch, useNavigate, useResolvedPath } from "react-router-dom"
 import { useAppThemeContext } from "../../contexts/ThemeContext"
-
-
-
 interface IMenuLateralProps {
     children: React.ReactNode
 }
@@ -75,6 +72,7 @@ export const MenuLateral: React.FC<IMenuLateralProps> = ({ children }) => {
                                         icon={option.icon} 
                                         label={option.label}
                                         onClose={smDown ? toggleDrawerOpen : undefined} 
+                                        key={option.to}
                                     />
                                 );
                             })}

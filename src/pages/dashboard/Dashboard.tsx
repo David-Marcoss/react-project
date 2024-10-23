@@ -3,7 +3,6 @@ import { FerramentasDeDetalhes } from "../../shared/components/ferramentas-de-de
 import { LayoutBaseDePagina } from "../../shared/layouts/LayoutBaseDePagina"
 
 
-
 export const Dashboard = () => {
 
     return (

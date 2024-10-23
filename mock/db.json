@@ -1,15 +1,25 @@
 
 
 {
-    "posts": [
-      { "id": "1", "title": "a title", "views": 100 },
-      { "id": "2", "title": "another title", "views": 200 }
-    ],
-    "comments": [
-      { "id": "1", "text": "a comment about post 1", "postId": "1" },
-      { "id": "2", "text": "another comment about post 1", "postId": "1" }
-    ],
-    "profile": {
-      "name": "typicode"
+  "pessoas": [
+    {
+      "id": 1,
+      "nomeCompleto": "João",
+      "email": "joao@gmail.com",
+      "cidadeId": 1
+    },
+    {
+      "id": 2,
+      "nomeCompleto": "maria",
+      "email": "maria@gmail.com",
+      "cidadeId": 2
+    },
+    {
+      "id": 3,
+      "nomeCompleto": "pedro",
+      "email": "pedro@gmail.com",
+      "cidadeId": 3
     }
-  }
+
+  ]
+}

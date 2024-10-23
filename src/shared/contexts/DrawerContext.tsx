@@ -1,6 +1,6 @@
 import React, { useCallback, useContext, useState, createContext } from "react";
 
-interface IIDrawerOptionData{
+interface IDrawerOptionData{
     label: string,
     icon: string,
     to: string,
@@ -8,8 +8,8 @@ interface IIDrawerOptionData{
 
 interface IDrawerContextData {
     drawerOpen: boolean;
-    drawerOptions: IIDrawerOptionData[],
-    setDrawerOptions: (options:IIDrawerOptionData[]) => void
+    drawerOptions: IDrawerOptionData[],
+    setDrawerOptions: (options:IDrawerOptionData[]) => void
     toggleDrawerOpen: () => void;
 }
 
@@ -26,13 +26,13 @@ export const useDrawerContext = () => {
 export const DrawerProvider: React.FC<IDrawerContextProps> = ({ children }) => {
 
     const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
-    const [drawerOptions,setDrawerOptions] = useState<IIDrawerOptionData[]>([])
+    const [drawerOptions,setDrawerOptions] = useState<IDrawerOptionData[]>([])
 
     const toggleDrawerOpen = useCallback(() => {
         setDrawerOpen(oldValue => !oldValue);
     }, []);
 
-    const handlerSetDrawerOptions = useCallback((options:IIDrawerOptionData[]) => {
+    const handlerSetDrawerOptions = useCallback((options:IDrawerOptionData[]) => {
         setDrawerOptions(options)
     },[])
 
