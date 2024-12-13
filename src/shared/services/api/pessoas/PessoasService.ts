@@ -2,14 +2,14 @@ import { Environment } from "../../../environments"
 import { Api } from "../axios-config"
 
 
-interface IPessoas{
+export interface IPessoas{
     id: number
     nomeCompleto: string
     email: string
     cidadeId: number
 }
 
-interface IPessoasList{
+export interface IPessoasList{
     pessoas: IPessoas[]
     totalCount: number
 }
@@ -20,13 +20,11 @@ const getAll = async(page=1, filter=""): Promise<IPessoasList | Error> => {
 
         const searchUrl = `/pessoas?_page=${page}&_per_page=${Environment.LIST_ITEMS_LIMIT}&nomeCompleto=${filter}`
 
-        console.log(searchUrl)
-
         const {data} = await Api.get(searchUrl)
 
         return {
             pessoas: data.data,
-            totalCount:  data.items|| Environment.LIST_ITEMS_LIMIT
+            totalCount:  data.items || Environment.LIST_ITEMS_LIMIT
         }
         
     } catch (error: any) {
@@ -71,6 +69,7 @@ const deleteById = async (id:number): Promise<void | Error> => {
         return
         
     } catch (error: any) {
+        console.log(error)
         return new Error(error.menssage || "Erro ao deletar registro")
     }
 }

@@ -10,7 +10,6 @@ export const useDebounce = (delay=300, notDelayInFirstTime=true) =>{
 
         if(isFirstTime.current){
             isFirstTime.current = false
-            console.log("cru")
             func()
         }else{
             if(timeOut.current){
@@ -19,7 +18,6 @@ export const useDebounce = (delay=300, notDelayInFirstTime=true) =>{
 
             timeOut.current = setTimeout( () => func(), delay)
         }
-
     },[delay])
     
     return debounce

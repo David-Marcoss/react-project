@@ -28,6 +28,7 @@ export const RoutesApp = () => {
             <Route path="/home" element={<Dashboard/>} />
 
             <Route path="/pessoas" element={<ListagemDePessoas/>} />
+            <Route path="/pessoas/:id" element={<div>Detalhes pessoa</div>} />
 
             <Route path="*" element={<Navigate to="/home"/>} />
         </Routes>
