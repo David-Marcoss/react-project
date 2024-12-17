@@ -4,6 +4,8 @@ import { AppThemeProvider } from "./shared/contexts/ThemeContext";
 import { MenuLateral } from "./shared/components/menu-lateral/MenuLateral";
 import { DrawerProvider } from "./shared/contexts/DrawerContext";
 
+import "./shared/forms/TranslationsYup"
+
 export const App = () => {
   return (
     <AppThemeProvider>

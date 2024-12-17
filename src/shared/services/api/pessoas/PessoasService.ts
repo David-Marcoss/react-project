@@ -3,10 +3,10 @@ import { Api } from "../axios-config"
 
 
 export interface IPessoas{
-    id: number
+    id: string
     nomeCompleto: string
     email: string
-    cidadeId: number
+    cidadeId: string
 }
 
 export interface IPessoasList{
@@ -32,7 +32,7 @@ const getAll = async(page=1, filter=""): Promise<IPessoasList | Error> => {
     }
 }
 
-const getById = async(id:number): Promise<IPessoas | Error> => {
+const getById = async(id:string): Promise<IPessoas | Error> => {
 
     try {
         const {data} = await Api.get(`/pessoas/${id}`)
@@ -46,7 +46,7 @@ const getById = async(id:number): Promise<IPessoas | Error> => {
     }
 }
 
-const create = async(dataPessoa:Omit<IPessoas,"id">): Promise<number | Error> => {
+const create = async(dataPessoa:Omit<IPessoas,"id">): Promise<string | Error> => {
 
     try {
 
@@ -59,7 +59,7 @@ const create = async(dataPessoa:Omit<IPessoas,"id">): Promise<number | Error> =>
     }
 }
 
-const deleteById = async (id:number): Promise<void | Error> => {
+const deleteById = async (id:string): Promise<void | Error> => {
 
     try {
 
@@ -74,7 +74,7 @@ const deleteById = async (id:number): Promise<void | Error> => {
     }
 }
 
-const updateById = async (id:number, data:Omit<IPessoas,"id">): Promise<void | Error> => {
+const updateById = async (id:string, data:Omit<IPessoas,"id">): Promise<void | Error> => {
 
     try {
         await Api.put(`/pessoas/${id}`,data)

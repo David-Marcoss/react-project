@@ -53,7 +53,7 @@ export const LayoutBaseDePagina:React.FC<ILayoutBaseDePaginaProps> = ( {titulo, 
                 )
             }
 
-            <Box flex={1} overflow={"auto"}>
+            <Box flex={1} overflow={"hidden"}>
                 {children}
             </Box>
             

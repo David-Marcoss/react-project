@@ -43,17 +43,22 @@ export const ListagemDePessoas:React.FC = () => {
         })
     }, [busca, pagina,debounce])
 
-    const handleDelete = (id : number) => {
-        PessoasService.deleteById(id).then( (result) => {
-            if( result instanceof Error){
-                console.log(result)
-                alert("Erro ao deletar registro !!")
-            }
-            else{
-                alert("Registro deletado com sucesso !!")
-                setRows( rows => rows.filter( row => row.id !== id))
-            }
-        })
+    const handleDelete = (id : string) => {
+        // eslint-disable-next-line no-restricted-globals
+        const userConfirmed = confirm("tem certeza que deseja apoagar o registro?")
+
+        if(userConfirmed){
+            PessoasService.deleteById(id).then( (result) => {
+                if( result instanceof Error){
+                    console.log(result)
+                    alert("Erro ao deletar registro !!")
+                }
+                else{
+                    alert("Registro deletado com sucesso !!")
+                    setRows( rows => rows.filter( row => row.id !== id))
+                }
+            })
+        }
     }
 
     return (
@@ -63,6 +68,7 @@ export const ListagemDePessoas:React.FC = () => {
             <FerramentasDeListagem 
                 mostrarInputBusca
                 textoBotao="Adicionar Pessoa"
+                clicarBotao={() => navigate("/pessoas/detalhe/nova")}
                 textoDeBusca={busca}
                 mudarTextoDeBusca={texto => setSearchParams({busca:texto, pagina:"1"},{replace:true})} />
             }>
@@ -90,7 +96,7 @@ export const ListagemDePessoas:React.FC = () => {
                                 <TableCell>
                                    <IconButton 
                                         size="small"
-                                        onClick={() => navigate("/pessoas/"+ row.id)}
+                                        onClick={() => navigate("/pessoas/detalhe/" + row.id)}
                                     >
                                         <Icon>
                                             edit
