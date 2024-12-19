@@ -10,6 +10,7 @@ import { LayoutBaseDePagina } from "../../shared/layouts/LayoutBaseDePagina"
 import { PessoasService } from "../../shared/services/api/pessoas/PessoasService"
 import { VtextField } from "../../shared/forms"
 import { VuseForm } from "../../shared/forms/VUseForm"
+import { AutoCompleteInput } from "./components/AutoCompleteInput";
 
 export interface IFormData {
     nomeCompleto: string
@@ -43,6 +44,7 @@ export const DetalhesDePessoas: React.FC = () => {
                         alert("Erro ao obter informações da pessoa")
                         navigate("/pessoas")
                     } else {
+                        console.log(result)
                         setPageTitle(result.nomeCompleto)
 
                         formRef.current?.setData(result)
@@ -167,7 +169,7 @@ export const DetalhesDePessoas: React.FC = () => {
                             </Typography>
                         </Grid>
 
-                        <Grid container item direction="row">
+                        <Grid container item direction="row" >
                             <Grid item xs={10} md={6} lg={4} xl={2}>
                                 <VtextField
                                     fullWidth
@@ -193,12 +195,8 @@ export const DetalhesDePessoas: React.FC = () => {
                         </Grid>
                         <Grid container item direction="row">
                             <Grid item xs={10} md={6} lg={4} xl={2}>
-                                <VtextField
-                                    fullWidth
-                                    label="Cidade"
-                                    placeholder="Picos"
-                                    name="cidadeId"
-                                    disabled={isLoading}
+                                <AutoCompleteInput 
+                                    isExternalLoading={isLoading}
                                 />
                             </Grid>
                         </Grid>
