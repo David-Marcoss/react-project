@@ -2,17 +2,17 @@ import { useNavigate, useSearchParams } from "react-router-dom"
 import { FerramentasDeListagem } from "../../shared/components"
 import { LayoutBaseDePagina } from "../../shared/layouts/LayoutBaseDePagina"
 import { useEffect, useMemo, useState } from "react"
-import { IPessoas, PessoasService } from "../../shared/services/api/pessoas/PessoasService"
+import { ICidades, CidadesService } from "../../shared/services/api/cidades/CidadesService"
 import { useDebounce } from "../../shared/hooks"
 import { Icon, IconButton, LinearProgress, Pagination, Paper, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow } from "@mui/material"
 import { Environment } from "../../shared/environments"
 
 
-export const ListagemDePessoas:React.FC = () => {
+export const ListagemDeCidades:React.FC = () => {
 
     const [searchParams,setSearchParams] = useSearchParams()
 
-    const [rows,setRows] = useState<IPessoas[]>([])
+    const [rows,setRows] = useState<ICidades[]>([])
     const [totalCount,setTotalCount] = useState(0)
     const [isloading,setIsLoading] = useState(true)
 
@@ -31,11 +31,11 @@ export const ListagemDePessoas:React.FC = () => {
     useEffect(() => {
         setIsLoading(true)
         debounce(() => {
-            PessoasService.getAll(Number(pagina), busca).then(result => {
+            CidadesService.getAll(Number(pagina), busca).then(result => {
                 if (result instanceof Error) alert(result.message)
                 else{
                     console.log(result)
-                    setRows(result.pessoas)
+                    setRows(result.cidades)
                     setTotalCount(result.totalCount)
                     setIsLoading(false)
                 }
@@ -48,7 +48,7 @@ export const ListagemDePessoas:React.FC = () => {
         const userConfirmed = confirm("tem certeza que deseja apoagar o registro?")
 
         if(userConfirmed){
-            PessoasService.deleteById(id).then( (result) => {
+            CidadesService.deleteById(id).then( (result) => {
                 if( result instanceof Error){
                     console.log(result)
                     alert("Erro ao deletar registro !!")
@@ -63,12 +63,12 @@ export const ListagemDePessoas:React.FC = () => {
 
     return (
         <LayoutBaseDePagina 
-            titulo="Pessoas" 
+            titulo="Cidades" 
             barraDeFerramentas={
             <FerramentasDeListagem 
                 mostrarInputBusca
-                textoBotao="Adicionar Pessoa"
-                clicarBotao={() => navigate("/pessoas/detalhe/nova")}
+                textoBotao="Adicionar Cidade"
+                clicarBotao={() => navigate("/cidades/detalhe/nova")}
                 textoDeBusca={busca}
                 mudarTextoDeBusca={texto => setSearchParams({busca:texto, pagina:"1"},{replace:true})} />
             }>
@@ -80,11 +80,8 @@ export const ListagemDePessoas:React.FC = () => {
                             <TableCell width={100}>
                                 Ações
                             </TableCell>
-                            <TableCell>
+                            <TableCell >
                                 Nome
-                            </TableCell>
-                            <TableCell>
-                                E-mail
                             </TableCell>
                         </TableRow>
                     </TableHead>
@@ -96,7 +93,7 @@ export const ListagemDePessoas:React.FC = () => {
                                 <TableCell>
                                    <IconButton 
                                         size="small"
-                                        onClick={() => navigate("/pessoas/detalhe/" + row.id)}
+                                        onClick={() => navigate("/cidades/detalhe/" + row.id)}
                                     >
                                         <Icon>
                                             edit
@@ -112,10 +109,7 @@ export const ListagemDePessoas:React.FC = () => {
                                    </IconButton>
                                 </TableCell>
                                 <TableCell>
-                                    {row.nomeCompleto}
-                                </TableCell>
-                                <TableCell>
-                                    {row.email}
+                                    {row.name}
                                 </TableCell>
                             </TableRow>
                         ))}

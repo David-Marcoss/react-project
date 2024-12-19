@@ -108,5 +108,39 @@
       "cidadeId": "12e21",
       "id": "805f"
     }
+  ],
+  "cidades": [
+    {
+      "name": "Picos",
+      "id": "1678"
+    },
+    {
+      "id": "4fa7",
+      "name": "teresina"
+    },
+    {
+      "id": "b247",
+      "name": "sergipe"
+    },
+    {
+      "id": "337c",
+      "name": "Rio de janeiro"
+    },
+    {
+      "id": "6ec4",
+      "name": "curitiba"
+    },
+    {
+      "id": "0a99",
+      "name": "Paraiba"
+    },
+    {
+      "id": "0b9c",
+      "name": "altos"
+    },
+    {
+      "id": "3eb6",
+      "name": "Natal"
+    }
   ]
 }

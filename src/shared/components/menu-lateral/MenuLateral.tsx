@@ -22,6 +22,7 @@ const ListItemLink: React.FC<IListItemLinkProps> = ({ icon, label, onClose, to }
         onClose?.()
         navigate(to)
     }
+    
     // obtem informações de uma rota
     const resolvedPath =  useResolvedPath(to)
     // retorna informaçoes se for a rota atual
