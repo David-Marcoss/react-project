@@ -1,4 +1,4 @@
-import { Box, Button, Icon, Paper, TextField, useTheme } from "@mui/material"
+import { Box, Button, Icon, Paper, TextField, Typography, useTheme } from "@mui/material"
 
 interface IFerramentasDeListagemPros {
     textoDeBusca?: string,
@@ -54,7 +54,9 @@ export const FerramentasDeListagem: React.FC<IFerramentasDeListagemPros> = ({
                             endIcon={<Icon>add</Icon>}
                             onClick={clicarBotao}
                         >
-                            {textoBotao}
+                            <Typography variant="button" textOverflow={"ellipsis"} overflow={"hidden"} whiteSpace="nowrap">
+                                {textoBotao}
+                            </Typography>
                         </Button>
                     )
                 }
