@@ -1,5 +1,4 @@
 import { CircularProgress, Grid, Paper, Typography } from "@mui/material"
-import { FerramentasDeListagem } from "../../shared/components"
 import { LayoutBaseDePagina } from "../../shared/layouts/LayoutBaseDePagina"
 import { useEffect, useState } from "react"
 import { CidadesService } from "../../shared/services/api/cidades/CidadesService"

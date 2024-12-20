@@ -5,20 +5,26 @@ import { MenuLateral } from "./shared/components/menu-lateral/MenuLateral";
 import { DrawerProvider } from "./shared/contexts/DrawerContext";
 
 import "./shared/forms/TranslationsYup"
+import { AuthProvider } from "./shared/contexts/AuthContext";
+import { Login } from "./shared/components/login/login";
 
 export const App = () => {
   return (
-    <AppThemeProvider>
-      <BrowserRouter>
-      
-      <DrawerProvider>
-        <MenuLateral>
-          <RoutesApp/>
-        </MenuLateral>
-      </DrawerProvider>
+    <AuthProvider>
+      <AppThemeProvider>
+        <Login>
+          <BrowserRouter>
 
-      </BrowserRouter>
-    </AppThemeProvider>
+            <DrawerProvider>
+              <MenuLateral>
+                <RoutesApp />
+              </MenuLateral>
+            </DrawerProvider>
+
+          </BrowserRouter>
+        </Login>
+      </AppThemeProvider>
+    </AuthProvider>
   );
 }
 
